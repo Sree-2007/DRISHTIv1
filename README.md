@@ -11,6 +11,12 @@ Smart urban traffic management prototype for SIH 2026. Three interfaces, one uni
 | **Backend** | Express + Socket.io · JWT auth · adaptive signal algorithm · AI image pre-check · prediction engine |
 | **Camera Simulator** | Simulates 6 intersections every 30s |
 
+**Police Dashboard** → http://localhost:3000
+
+**Backend API** → http://localhost:5000
+
+**Mobile App** → Scan QR code from Expo
+
 ## 📱 Mobile on Physical Device
 
 Edit mobile-app/src/api.js and replace localhost with your laptop's LAN IP
