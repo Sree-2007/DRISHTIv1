@@ -14,6 +14,7 @@ Smart urban traffic management prototype for SIH 2026. Three interfaces, one uni
 ## 📱 Mobile on Physical Device
 
 Edit mobile-app/src/api.js and replace localhost with your laptop's LAN IP
+
 E.g.: *const HOST = 'http://192.168.1.42:5000';*
 
 ## 🚀 Quick Start (3 commands)
