@@ -21,7 +21,7 @@ npm run setup
 npm run dev
 
 # 3. In a new terminal — start mobile app
-npm run dev:mobile
+npm run dev:mobile'''
 
 ## Demo Credentials
 
@@ -32,3 +32,4 @@ Admin	                     admin@drishti.io
 Driver	                   driver@drishti.io
 Citizen	                   citizen@drishti.io
 
+pwd: password123
