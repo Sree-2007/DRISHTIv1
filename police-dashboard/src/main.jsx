@@ -1,9 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import './index.css';
 
-html, body, #root { height: 100%; background: #0a0e1a; color: #e5e7eb; font-family: 'Inter', ui-sans-serif, system-ui; }
-* { box-sizing: border-box; }
-.leaflet-container { background: #0a0e1a; }
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
