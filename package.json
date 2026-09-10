@@ -1,10 +1,18 @@
-"scripts": {
-  "install:all": "npm install && npm --prefix backend install && npm --prefix police-dashboard install && npm --prefix camera-simulator install && npm --prefix mobile-app install",
-  "db:setup": "npm --prefix backend run db:push && npm --prefix backend run db:seed",
-  "dev:backend": "npm --prefix backend run dev",
-  "dev:police": "npm --prefix police-dashboard run dev",
-  "dev:simulator": "npm --prefix camera-simulator start",
-  "dev:mobile": "npm --prefix mobile-app start",
-  "setup": "npm run install:all && npm run db:setup",
-  "dev": "concurrently -n backend,police,sim -c blue,magenta,green \"npm run dev:backend\" \"npm run dev:police\" \"npm run dev:simulator\""
-} 
+{
+  "name": "drishti",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm --prefix backend install && npm --prefix police-dashboard install && npm --prefix camera-simulator install && npm --prefix mobile-app install",
+    "db:setup": "npm --prefix backend run db:push && npm --prefix backend run db:seed",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:police": "npm --prefix police-dashboard run dev",
+    "dev:simulator": "npm --prefix camera-simulator start",
+    "dev:mobile": "npm --prefix mobile-app start",
+    "setup": "npm run install:all && npm run db:setup",
+    "dev": "concurrently -n backend,police,sim -c blue,magenta,green \"npm run dev:backend\" \"npm run dev:police\" \"npm run dev:simulator\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
