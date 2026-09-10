@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         String   @default("CITIZEN")
+  trustScore   Int      @default(50)
+  createdAt    DateTime @default(now())
+  reports      Report[]
+  assignments  ZoneAssignment[]
+
+  @@index([role])
+}
+
+model Zone {
+  id                String   @id @default(uuid())
+  name              String   @unique
+  boundary          String
+  currentStatus     String   @default("NORMAL")
+  assignedOfficerId String?
+  updatedAt         DateTime @updatedAt
+  assignments       ZoneAssignment[]
+  signals           TrafficSignal[]
+  reports           Report[]
+  predictions       HazardPrediction[]
+}
+
+model ZoneAssignment {
+  id         String   @id @default(uuid())
+  officerId  String
+  zoneId     String
+  assignedAt DateTime @default(now())
+  status     String   @default("ACTIVE")
+  officer    User     @relation(fields: [officerId], references: [id])
+  zone       Zone     @relation(fields: [zoneId], references: [id])
+}
+
+model Report {
+  id                  String   @id @default(uuid())
+  reporterId          String
+  zoneId              String?
+  type                String
+  description         String
+  imageUrl            String?
+  lat                 Float
+  lng                 Float
+  status              String   @default("PENDING")
+  aiConfidence        Float?
+  verifiedByOfficerId String?
+  createdAt           DateTime @default(now())
+  reporter            User     @relation(fields: [reporterId], references: [id])
+  zone                Zone?    @relation(fields: [zoneId], references: [id])
+
+  @@index([createdAt])
+  @@index([zoneId])
+}
+
+model TrafficSignal {
+  id               String   @id @default(uuid())
+  zoneId           String
+  intersectionName String
+  lat              Float
+  lng              Float
+  currentPhase     String   @default("NORTH")
+  greenTimeSeconds Int      @default(30)
+  vehicleCount     Int      @default(0)
+  bikeCount        Int      @default(0)
+  isAmbulanceMode  Boolean  @default(false)
+  lastUpdated      DateTime @updatedAt
+  zone             Zone     @relation(fields: [zoneId], references: [id])
+
+  @@index([zoneId])
+}
+
+model HazardPrediction {
+  id              String   @id @default(uuid())
+  zoneId          String
+  predictedType   String
+  confidenceScore Float
+  weatherData     String
+  expiresAt       DateTime
+  createdAt       DateTime @default(now())
+  zone            Zone     @relation(fields: [zoneId], references: [id])
+}
+
+model Alert {
+  id           String   @id @default(uuid())
+  type         String
+  message      String
+  targetZoneId String?
+  lat          Float?
+  lng          Float?
+  radius       Float?
+  sentToUsers  String
+  createdAt    DateTime @default(now())
+}
