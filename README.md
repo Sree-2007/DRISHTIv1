@@ -22,3 +22,13 @@ npm run dev
 
 # 3. In a new terminal — start mobile app
 npm run dev:mobile
+
+## Demo Credentials
+
+Role	                     Email
+Police Officer	           police@drishti.io
+Second Officer	           police2@drishti.io
+Admin	                     admin@drishti.io
+Driver	                   driver@drishti.io
+Citizen	                   citizen@drishti.io
+
