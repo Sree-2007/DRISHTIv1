@@ -11,6 +11,11 @@ Smart urban traffic management prototype for SIH 2026. Three interfaces, one uni
 | **Backend** | Express + Socket.io · JWT auth · adaptive signal algorithm · AI image pre-check · prediction engine |
 | **Camera Simulator** | Simulates 6 intersections every 30s |
 
+## 📱 Mobile on Physical Device
+
+Edit mobile-app/src/api.js and replace localhost with your laptop's LAN IP
+E.g.: *const HOST = 'http://192.168.1.42:5000';*
+
 ## 🚀 Quick Start (3 commands)
 
 ```bash
@@ -21,7 +26,7 @@ npm run setup
 npm run dev
 
 # 3. In a new terminal — start mobile app
-npm run dev:mobile'''
+npm run dev:mobile 
 
 ## Demo Credentials
 
