@@ -11,6 +11,18 @@ module.exports = (prisma, io) => {
     const signal = await prisma.trafficSignal.findFirst({ where: { intersectionName } });
     if (!signal) return res.status(404).json({ error: 'Signal not found' });
 
+    // ⚠️ If under manual control, only update density — don't touch timing/phase
+    if (signal.isManualMode || signal.isAmbulanceMode) {
+      const updated = await prisma.trafficSignal.update({
+        where: { id: signal.id },
+        data: { vehicleCount, bikeCount, lastUpdated: new Date() }
+      });
+      io.of('/signal').emit('signal:update', updated);
+      io.of('/police').emit('signal:update', updated);
+      io.of('/driver').emit('signal:update', updated);
+      return res.json(updated);
+    }
+
     const greenTime = computeGreenTime(vehicleCount, bikeCount);
     const updated = await prisma.trafficSignal.update({
       where: { id: signal.id },
