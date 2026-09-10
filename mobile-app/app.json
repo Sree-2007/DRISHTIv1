@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "DRISHTI",
+    "slug": "drishti",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": { "backgroundColor": "#0a0e1a" },
+    "ios": { "supportsTablet": true },
+    "android": { "package": "io.drishti.app" },
+    "plugins": [
+      ["expo-camera", { "cameraPermission": "DRISHTI needs camera for hazard reports." }],
+      ["expo-location", { "locationAlwaysAndWhenInUsePermission": "DRISHTI shows hazards near you." }]
+    ]
+  }
+}
