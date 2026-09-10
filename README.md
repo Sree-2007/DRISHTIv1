@@ -1,2 +1,24 @@
-# DRISHTIv1
-TEAM- MOSAIC
+# 👁️ DRISHTI — Dynamic Roadway Intelligence System for Hazard Tracking & Intervention
+
+Smart urban traffic management prototype for SIH 2026. Three interfaces, one unified backend, real-time data flow.
+
+## ✨ Features
+
+| Interface | Highlights |
+|-----------|-----------|
+| **Driver / Citizen Mobile App** | Live hazard map · in-app reporting with camera + GPS · voice alerts · trust score gamification |
+| **Police Dashboard** | Live zone control · one-click report verification · adaptive signal override · ambulance mode · analytics |
+| **Backend** | Express + Socket.io · JWT auth · adaptive signal algorithm · AI image pre-check · prediction engine |
+| **Camera Simulator** | Simulates 6 intersections every 30s |
+
+## 🚀 Quick Start (3 commands)
+
+```bash
+# 1. Install everything
+npm run setup
+
+# 2. Start backend + police dashboard + simulator
+npm run dev
+
+# 3. In a new terminal — start mobile app
+npm run dev:mobile
