@@ -76,6 +76,8 @@ model TrafficSignal {
   vehicleCount     Int      @default(0)
   bikeCount        Int      @default(0)
   isAmbulanceMode  Boolean  @default(false)
+  isManualMode     Boolean  @default(false)
+  manualOverrideBy String?
   lastUpdated      DateTime @updatedAt
   zone             Zone     @relation(fields: [zoneId], references: [id])
 
@@ -103,23 +105,4 @@ model Alert {
   radius       Float?
   sentToUsers  String
   createdAt    DateTime @default(now())
-}
-
-model TrafficSignal {
-  id               String   @id @default(uuid())
-  zoneId           String
-  intersectionName String
-  lat              Float
-  lng              Float
-  currentPhase     String   @default("NORTH")
-  greenTimeSeconds Int      @default(30)
-  vehicleCount     Int      @default(0)
-  bikeCount        Int      @default(0)
-  isAmbulanceMode  Boolean  @default(false)
-  isManualMode     Boolean  @default(false)   // ← NEW
-  manualOverrideBy String?                     // ← NEW (officer id)
-  lastUpdated      DateTime @updatedAt
-  zone             Zone     @relation(fields: [zoneId], references: [id])
-
-  @@index([zoneId])
 }
