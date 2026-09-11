@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
     "splash": { "backgroundColor": "#0a0e1a" },
     "ios": { "supportsTablet": true },
     "android": { "package": "io.drishti.app" },
